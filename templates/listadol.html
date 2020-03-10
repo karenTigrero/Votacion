@@ -1,0 +1,109 @@
+{% extends 'layout.html' %}
+
+
+{% block titulo %}
+Elecciones 2020 | Listado de Lista
+{% endblock titulo %}
+
+{% block body %}
+<div>
+  <button class="btn btn-primary" type="button" onclick="abrir_modal_creacion('/crearl')">Crear Lista</button>
+</div>
+{% if listas %}
+<div class="card">
+  <style>
+    .order-table {
+    position: relative; }
+    .order-table:after, .order-table:before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      height: 37px;
+      width: 10px;
+      background: #e8e9ef; }
+    .order-table:after {
+      right: -1px; }
+    .order-table:before {
+      left: -1px; }
+    .order-table tr th {
+      background: #e8e9ef; }
+    .order-table tr td:last-child, .order-table tr th:last-child {
+      text-align: right; }
+    .order-table tr:last-child td {
+      border: none; }
+    .order-table .badge {
+      color: white;
+      padding: 10px;
+      text-transform: uppercase;
+      font-weight: normal; }
+    .order-table .badge-complete {
+      background: #00c292; }
+    .order-table .badge-pending {
+      background: #fb9678; }
+    </style>
+
+  <div class="card-header">
+    <strong class="card-title">Listado de Listas</strong>
+  </div>
+  <div class="table-stats order-table ov-h">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Candidatos</th>
+          <th>Propuesta</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lista in listas %}
+        <tr>
+          <td>{{ lista.id }}</td>
+          <td>{{ lista.nombre }}</td>
+          <td>
+            {% for candidato in lista.candidato_id.all %}
+            <li>{{ candidato.nombre }}</li>
+            {% endfor %}
+          </td>
+          <td>{{ lista.propuesta }}</td>
+          <td>
+            <a href="/lista/eliminarl/{{lista.id}}" class="btn btn-danger">Eliminar</a>
+            <button onclick="abrir_modal_edicion('/lista/editarl/{{lista.id}}" class="btn btn-primary">Editar</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% else %}
+<h1>No existen listas registrados</h1>
+{% endif %}
+
+<div class="modal fade" id="creacion" role="dialog">
+
+</div>
+
+<div class="modal fade" id="edicion" role="dialog">
+
+</div>
+
+{% endblock body %}
+
+{% block extrajs %}
+
+<script type="text/javascript">
+  var $ = jQuery.noConflict();
+  function abrir_modal_edicion(url){
+    $('#edicion').load(url, function (){
+      $(this).modal('show');
+    });
+  }
+  function abrir_modal_creacion(url){
+    $('#creacion').load(url,function(){
+      $(this).modal('show');
+    });
+  }
+</script>
+{% endblock extrajs %}

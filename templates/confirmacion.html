@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block titulo %}
+  elecciones 2020 | Esta seguro del voto
+{% endblock titulo %}
+
+{% block body %}
+
+<form method="post">
+  {% csrf_token %}
+  <p><strong>¿Desea enviar el voto {{ object }}?</strong></p>
+  <button type="submit" class="btn btn-danger" href="/">Confirmar</button>
+</form>
+
+{% endblock body %}
