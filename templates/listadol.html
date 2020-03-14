@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+{% block titulo %}
+Elecciones 2020 | Listado de Lista
+{% endblock titulo %}
+
+{% block content %}
+<div>
+  <button class="btn btn-primary" type="button" onclick="abrir_modal_creacion(lista:crearl)">Crear Lista</button>
+</div>
+{% if listas %}
+<div class="card">
+
+  <div class="card-header">
+    <strong class="card-title">Listado de Listas</strong>
+  </div>
+  <div class="table-stats order-table ov-h">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Candidatos</th>
+          <th>Propuesta</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lista in listas %}
+        <tr>
+          <td>{{ lista.id }}</td>
+          <td>{{ lista.nombre }}</td>
+          <td>
+            {% for candidato in lista.candidato_id.all %}
+            <li>{{ candidato.nombre }}</li>
+            {% endfor %}
+          </td>
+          <td>{{ lista.propuesta }}</td>
+          <td>
+            <a href="/lista/eliminarl/{{lista.id}}" class="btn btn-danger">Eliminar</a>
+            <button onclick="abrir_modal_edicion('/lista/editarl/{{lista.id}}" class="btn btn-primary">Editar</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% else %}
+<h1>No existen listas registrados</h1>
+{% endif %}
+
+<div class="modal fade" id="creacion" role="dialog">
+
+</div>
+
+<div class="modal fade" id="edicion" role="dialog">
+
+</div>
+
+{% endblock content %}
+
+{% block extrajs %}
+
+<script type="text/javascript">
+  var $ = jQuery.noConflict();
+  function abrir_modal_edicion(url){
+    $('#edicion').load(url, function (){
+      $(this).modal('show');
+    });
+  }
+  function abrir_modal_creacion(url){
+    $('#creacion').load(url,function(){
+      $(this).modal('show');
+    });
+  }
+</script>
+{% endblock extrajs %}

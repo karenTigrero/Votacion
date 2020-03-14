@@ -1,0 +1,224 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div id="particles-js"></div>
+<div class="container" >
+  <div class="col-lg-12" style="background: rgba(0,0,0,0.6);margin-top:3em;margin-bottom:5em;padding-top:1em;padding-bottom:3em;color:#fff;border-radius:10px;-webkit-box-shadow: 2px 2px 15px 0px rgba(0, 3, 0, 0.7);
+-moz-box-shadow:    2px 2px 15px 0px rgba(0, 3, 0, 0.7);
+box-shadow:         2px 2px 15px 0px rgba(0, 3, 0, 0.7);">
+<style>
+  .user-area {
+    float: right;
+    padding-right: 0;
+    position: relative;
+    padding-left: 20px; }
+    .user-area .user-menu {
+      background: #fff;
+      border: none;
+      left: inherit !important;
+      right: 0;
+      top: 54px !important;
+      margin: 0;
+      max-width: 150px;
+      padding: 5px 10px;
+      position: absolute;
+      width: 100%;
+      z-index: 999;
+      min-width: 150px;
+      -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+              box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05); }
+      .user-area .user-menu .nav-link {
+        color: #607d8b;
+        display: block;
+        font-size: 13px;
+        line-height: 22px;
+        padding: 5px 0; }
+        .user-area .user-menu .nav-link > i {
+          margin-right: 10px; }
+    .user-area .user-avatar {
+      float: right;
+      width: 40px; }
+
+    .user-area .user-info .name {
+      color: #8c8c8c;
+      font-size: 14px;
+      position: relative;
+      text-transform: uppercase; }
+    .user-area .count {
+      background: #d9534f;
+      border-radius: 50%;
+      color: #fff;
+      font-family: 'Open Sans';
+      font-size: 9px;
+      font-weight: 700;
+      float: right;
+      height: 20px;
+      width: 20px;
+      line-height: 20px;
+      text-align: center; }
+    .user-area .dropdown-toggle {
+      line-height: 55px;
+      height: 55px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
+      .user-area .dropdown-toggle:after {
+        display: none; }
+
+</style>
+    <div class="col-lg-12">
+      <div class="top-right">
+                <div class="header-menu">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="{% static 'images/admin.png' %}" alt="User Avatar">
+                            <h6 class="text-center">{{ user.username | upper }}</h6>
+                        </a>
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="#"><i class="fa fa- user"></i>Perfil</a>
+                            <a class="nav-link" href="/admin/logout/"><i class="fa fa-power -off"></i>Logout</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+      <h1 class="text-center section-title" style="margin-bottom:2em">VOTO ELECTRÓNICO MEDIANTE RECONOCIMIENTO FACIAL.</h1>
+    </div>
+    <style>
+      h4{
+        margin-bottom: 1.5em;
+      }
+      img{
+        border-radius:50%;
+        -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+     transition: all 0.3s ease-in-out;
+      }
+      img:hover{
+        -webkit-box-shadow: 2px 2px 21px 0px rgba(0, 3, 0, 0.91);
+        -moz-box-shadow:    2px 2px 21px 0px rgba(0, 3, 0, 0.91);
+        box-shadow:         2px 2px 21px 0px rgba(0, 3, 0, 0.91);
+        border:2px solid #fff;
+      }
+      h3{
+        margin-bottom: 1.3em;
+      }
+      a{
+        color:inherit
+      }
+      a:hover{
+        color:inherit;
+        text-decoration: none;
+      }
+      .section-title:after {
+        	content:' ';display:block;margin:0 auto;width:100px;margin-top: 6px;border:2px solid #d0d0d0;border-radius:4px;
+        	-webkit-border-radius:4px;
+        	-moz-border-radius:4px;
+        	box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+        	-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+        	-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+          margin-bottom:1em;
+        }
+    </style>
+
+    <div class="row">
+      <div class="col-md-5" style="border-right: 2px solid;">
+        <h3 class="text-center">REGISTRO</h3>
+        <div class="col-md-6">
+          <!-- <a href="/listadol"><img src="{% static 'img/list.png' %}" class="img-responsive" /></a> -->
+          <a   href="{% url 'lista:listadol' %}"><img src="{% static 'img/list.png' %}" class="img-responsive" /></a>
+          <h4 class="text-center">LISTAS</h4>
+        </div>
+        <div class="col-md-6">
+          <a  target="_blank" href="{% url 'votante:crearv' %}" method="post"><img src="{% static 'img/votant.png' %}" class="img-responsive" /></a>
+          <h4 class="text-center">VOTANTES</h4>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <h3 class="text-center"> VOTO | RECONOMIENTO  </h3>
+        <div class="col-md-4">
+          <button type="button" style="background:transparent;border:none" data-toggle="modal" data-target="#myModal">
+            <img src="{% static 'img/add.png' %}" class="img-responsive" />
+          </button>
+          <h4 class="text-center">REGISTRO RECONOCIMIENTO</h4>
+        </div>
+        <div class="col-md-4">
+          <a href="/trainer"><img src="{% static 'img/trainer.png' %}" class="img-responsive" /></a>
+          <h4 class="text-center">ENTRENAMIENTO</h4>
+        </div>
+        <div class="col-md-4">
+          <a href="/detect"><img src="{% static 'img/webcam.png' %}" class="img-responsive" /></a>
+          <h4 class="text-center">VOTO</h4>
+        </div>
+      </div>
+    </div>
+    <div class="low">
+      <div class="col-md-7">
+
+        <center><h3 class="text-center">********************************************** REPORTES **********************************************</h3></center>
+        <div class="col-md-4">
+          <a href="/reporte_candidato" target="_blank"><img src="{% static 'img/candidato.png' %}" class="img-responsive" /></a>
+          <h4 class="text-center">Candidatos</h4>
+        </div>
+        <div class="col-md-4">
+          <a href=""><img src="{% static 'img/lista.png' %}" class="img-responsive" /></a>
+          <h4 class="text-center">Listas</h4>
+        </div>
+        <div class="col-md-4">
+          <a href=""><img src="{% static 'img/votante.png' %}" class="img-responsive" /></a>
+          <h4 class="text-center">Votantes</h4>
+        </div>
+        <div class="col-md-4">
+          <a href=""><img src="{% static 'img/vo.png' %}" class="img-responsive" /></a>
+          <h4 class="text-center">VOTO</h4>
+        </div>
+        <div class="col-md-4">
+          <a href=""><img src="{% static 'img/rep_gana.png' %}" class="img-responsive" /></a>
+          <h4 class="text-center">Ganador</h4>
+        </div>
+        </div>
+      </div>
+
+</div><!-- Container -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Ingrese una identificación única y espere la cámara web</h4>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>Para mayor precisión, asegúrese de permanecer en la habitación con buenos rayos.</li>
+          <li>Elimine cualquier tipo de accesorio de la cara.</li>
+          <li>Asegúrese de que su cara esté claramente visible en la cámara.</li>
+          <li>Asegúrate de que tu cabello no esté bloqueando la cara.</li>
+          <li>Asegúrese de que no haya otras caras dentro del marco de la cámara.</li>
+        </ul>
+        <hr/>
+        <form action="/create_dataset" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="inputId">*INGRESE SU ID ÚNICO*</label>
+            <input type="text" class="form-control" name="userId" id="inputId" placeholder="REGISTRAR">
+          </div>
+          <button type="submit" class="btn btn-warning">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}

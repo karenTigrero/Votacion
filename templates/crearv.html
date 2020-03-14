@@ -1,0 +1,77 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+
+<div class="container" >
+<form method="POST">
+  {% csrf_token %}
+
+  {% if error %}
+    <h2>{{ error }}</h2>
+  {% else %}
+      <div class="card">
+          <div class="card-header">
+              <strong>Formulario de Registro</strong>
+          </div>
+          <div class="card-body card-block">
+              <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
+                  <div class="row form-group">
+                    <div class="col col-md-3">{{ form.cedula.label }}</div>
+                    <div class="col-12 col-md-9">{{ form.cedula }}</div>
+                  </div>
+                  <div class="row form-group">
+                      <div class="col col-md-3">{{ form.nombre.label }}</div>
+                      <div class="col-12 col-md-9">{{ form.nombre }}</div>
+                  </div>
+                  <div class="row form-group">
+                      <div class="col col-md-3">{{ form.apellido.label }}</div>
+                      <div class="col-12 col-md-9">{{ form.apellido }}</div>
+                  </div>
+                  <div class="row form-group">
+                      <div class="col col-md-3">{{ form.telefono.label }}</div>
+                      <div class="col-12 col-md-9">{{ form.telefono }}</div>
+                  </div>
+                  <div class="row form-group">
+                      <div class="col col-md-3">{{ form.direccion.label }}</div>
+                      <div class="col-12 col-md-9">{{ form.direccion }}</div>
+                  </div>
+                  <div class="row form-group">
+                      <div class="col col-md-3">{{ form.correo.label }}</div>
+                      <div class="col-12 col-md-9">{{ form.correo }}</div>
+                      <!-- <input id="emailAddress" type="email" size="64" maxLength="64" required
+          placeholder="username@beststartupever.com" pattern="tigrerokaren@gmail.com"
+          title="Please provide only a Best Startup Ever corporate email address">{{ form.correo }} -->
+          <!-- <input id="emailAddress" type="email" placeholder="user@example.gov"
+       list="defaultEmails" size="64" maxlength="256" multiple>
+       <datalist id="defaultEmails">
+         <option value="jbond007@mi6.defence.gov.uk">
+         <option value="jbourne@unknown.net">
+         <option value="nfury@shield.org">
+         <option value="tony@starkindustries.com">
+         <option value="hulk@grrrrrrrr.arg">
+       </datalist> -->
+                  </div>
+                  <div class="row form-group">
+                        <div class="col col-md-3">{{ form.sexo_id.label }}</div>
+                        <div class="col-12 col-md-9">{{ form.sexo_id }}</div>
+                    </div>
+
+              </form>
+              <div class="text-center">
+                  <!-- <button type="submit" class="btn btn-primary">Registrar</button> -->
+                  <input type="submit" class="btn btn-primary" name="submit" value="Guardar">
+                  <button type="reset" class="btn btn-danger">Cancelar</button>
+              </div>
+          </div>
+
+      </div>
+  {% endif %}
+</form>
+<div class="col-md-12" style="margin-top:2em">
+  <a href="/" class="btn btn-warning"><i class="fa fa-chevron-left" aria-hidden="true"></i> INICIO</a>
+</div>
+</div>
+
+
+{% endblock %}

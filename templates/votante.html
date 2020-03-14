@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <h1 class="jumbotron">Votante</h1>
+  <ul>
+    {% for votante in votantes %}
+      <li><a href="/votantes/voto/{{votante.cedula}}">{{votante.nombre}} {{votante.apellido}}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

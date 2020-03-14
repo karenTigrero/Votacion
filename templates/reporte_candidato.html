@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+{% if candidatos %}
+    <title>CANDIDATOS</title>
+  </head>
+  <body>
+    <center><h1>LIGA DEPORTIVA CANTONAL LA LIBERTAD</h1></center>
+    <p>REPORTE DE CANDIDATOS</p>
+    <table class="table">
+  
+
+    <div class="col-md-12" style="text-align:center">
+      <h3 style="color:#d18f02"><b>{{candidato.id}}</b></h3>
+      <h5><b>{{candidato.cedula}}</b></h5>
+      <h5><b>Nombre: </b> {{candidato.nombre}} </h5>
+      <h5><b>apellidos: </b> {{candidato.apellidos}} </h5>
+      <h5><b>descripcion: </b> {{candidato.descripcion}} </h5>
+
+    </div>
+    </table>
+  </body>
+{% else %}
+    <h1>No existen candidatos registrados</h1>
+{% endif %}
+</html>

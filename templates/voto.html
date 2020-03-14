@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+
+  <div style="padding-bottom: 2em;text-align:center">
+    <label for="file-input" style="cursor:pointer">
+      <center><img src="{% static 'img/liga.jpg' %}" class="img-responsive" /></center>
+    </label>
+    <h1 class="text-center" style="color:#047c2a">REALICE SU VOTO</h1>
+    <p>***ELIJA SABIAMENTE SU VOTO PARA LOS NUEVOS DIRECTIVOS DE LA LIGA DEPORTIVA CANTONAL DE LA LIBERTAD***</p>
+  </div>
+
+  <!-- <ul>
+    <li>{{record.first_name}} {{record.last_name}}</li>
+    <li>{{record.occupation}}</li>
+    <li>{{record.residence}}, {{record.country}}</li>
+  </ul> -->
+  <div class="container">
+    <div class="row">
+       <div class="col-md-10 col-md-offset-1" style="padding-top:3em;padding-bottom:3em;-webkit-box-shadow: 0px 0px 14px 0px rgba(50, 50, 50, 0.5);
+-moz-box-shadow:    0px 0px 14px 0px rgba(50, 50, 50, 0.5);
+box-shadow:         0px 0px 14px 0px rgba(50, 50, 50, 0.5);">
+<!-- <div class="col-lg-12" style="background: rgba(0,0,0,0.6);margin-top:3em;margin-bottom:5em;padding-top:1em;padding-bottom:3em;color:#fff;border-radius:10px;-webkit-box-shadow: 2px 2px 15px 0px rgba(0, 3, 0, 0.7);
+-moz-box-shadow:    2px 2px 15px 0px rgba(0, 3, 0, 0.7);
+box-shadow:         2px 2px 15px 0px rgba(0, 3, 0, 0.7);"> -->
+        <div class="col-md-5">
+          <div class="row">
+            <label for="file-input" style="cursor:pointer">
+              <img src="{% static 'img/ele.jpg' %}" class="img-responsive" />
+            </label>
+            <div class="col-md-12" style="text-align:center">
+              <h3 style="color:#d18f02"><b>{{votante.cedula}}</b></h3>
+              <h5><b>{{votante.nombre}} {{votante.apellido}}</b></h5>
+              <h5><b>Teléfono: </b> {{votante.telefono}} </h5>
+              <h5><b>Dirección: </b> {{votante.direccion}} </h5>
+              <h5><b>Correo: </b> {{votante.correo}} </h5>
+              <h5><b>Sexo: </b> {% for sexo in votante.sexo_id.all %}
+                  <li>{{ sexo.nombre }}</li>
+                {% endfor %}
+            </div>
+
+          </div>
+        </div>
+
+        <div class="" style="text-align:center">
+        <div class="col-md-7" >
+          <h3 style="color:#d18f02"><b> LISTAS</b></h3>
+          <form style="margin: auto">
+        <p><label>
+          <p><input type="radio" name="lista" value="0"/> LISTA  A</p>
+        </label></p>
+        <p> <label>
+          <input type="radio" name="lista" value="1"/> LISTA  B
+        </label></p>
+        <label>
+          <b><input type="radio" name="lista" value="2"/>NULO</b>
+        </label>
+        <br>
+        <input type="submit" name="VOTAR" href="confirmacion.html">
+         <!-- <input type="submit" name="submit_button"> -->
+        </form>
+        </div>
+        </div>
+        <div class="col-md-12" style="margin-top:2em">
+          <a href="/" class="btn btn-warning"><i class="fa fa-chevron-left" aria-hidden="true"></i> INICIO</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock  %}
